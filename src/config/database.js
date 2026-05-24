@@ -1,9 +1,9 @@
-const Database = require('better-sqlite3');
-const path = require('path');
-const fs = require('fs');
+const Database = require("better-sqlite3");
+const path = require("path");
+const fs = require("fs");
 
-const DB_DIR = path.join(__dirname, '..', 'db');
-const DB_PATH = process.env.DB_PATH || path.join(DB_DIR, 'examen.db');
+const DB_DIR = path.join(__dirname, "..", "db");
+const DB_PATH = process.env.DB_PATH || path.join(DB_DIR, "examen.db");
 
 if (!fs.existsSync(DB_DIR)) {
   fs.mkdirSync(DB_DIR, { recursive: true });
@@ -12,11 +12,11 @@ if (!fs.existsSync(DB_DIR)) {
 const db = new Database(DB_PATH);
 
 // Performance & veiligheid settings
-db.pragma('journal_mode = WAL');
-db.pragma('foreign_keys = ON');
-db.pragma('synchronous = NORMAL');
-db.pragma('cache_size = -64000');
-db.pragma('temp_store = MEMORY');
+db.pragma("journal_mode = WAL");
+db.pragma("foreign_keys = ON");
+db.pragma("synchronous = NORMAL");
+db.pragma("cache_size = -64000");
+db.pragma("temp_store = MEMORY");
 
 // Schema initialisatie
 function initSchema() {
@@ -46,7 +46,7 @@ function initSchema() {
       FOREIGN KEY (created_by) REFERENCES users(id)
     );
 
-    -- Vragen (inclusief info slides)
+    -- Vragen (inclusief Slide met informaties)
     CREATE TABLE IF NOT EXISTS vragen (
       id TEXT PRIMARY KEY,
       examen_id TEXT NOT NULL,
@@ -141,23 +141,30 @@ function initSchema() {
     CREATE INDEX IF NOT EXISTS idx_fraud_ke ON fraud_logs(kandidaat_examen_id);
   `);
 
-  console.log('Database schema initialized');
+  console.log("Database schema initialized");
 }
 
 // Default admin aanmaken
 function createDefaultAdmin() {
-  const bcrypt = require('bcryptjs');
-  const { v4: uuidv4 } = require('uuid');
+  const bcrypt = require("bcryptjs");
+  const { v4: uuidv4 } = require("uuid");
 
-  const existing = db.prepare('SELECT id FROM users WHERE role = ?').get('admin');
+  const existing = db
+    .prepare("SELECT id FROM users WHERE role = ?")
+    .get("admin");
   if (!existing) {
     const id = uuidv4();
-    const hash = bcrypt.hashSync(process.env.ADMIN_DEFAULT_PASS || 'admin123', 10);
-    db.prepare(`
+    const hash = bcrypt.hashSync(
+      process.env.ADMIN_DEFAULT_PASS || "admin123",
+      10
+    );
+    db.prepare(
+      `
       INSERT INTO users (id, naam, username, password_hash, role)
       VALUES (?, ?, ?, ?, ?)
-    `).run(id, 'Administrator', 'admin', hash, 'admin');
-    console.log('Default admin created: admin / admin123');
+    `
+    ).run(id, "Administrator", "admin", hash, "admin");
+    console.log("Default admin created: admin / admin123");
   }
 }
 

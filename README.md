@@ -1,7 +1,7 @@
-# Examen Systeem v2.0
+# Examum
 
-Online examensysteem met admin, docent en kandidaat portals. 
-Ingebouwde anti-fraud maatregelen en veilige timer.
+Online examensysteem met admin-, docent- en kandidaatportals. 
+Ingebouwde anti-fraude maatregelen en veilige timer.
 
 ## Installatie
 
@@ -11,10 +11,10 @@ npm install
 
 ## Configuratie
 
-Kopieer `.env.example` naar `.env` en pas aan:
+Kopieer `.env.example` naar `.env` en pas dit aan:
 
 ```bash
-SESSION_SECRET=jouw_geheime_sleutel
+SESSION_SECRET=jeSleutel
 PORT=3000
 ```
 
@@ -31,9 +31,9 @@ npm start
 ## Features
 
 - ✅ Admin, Docent, Kandidaat rollen
-- ✅ Anti-fraud: tab switching detectie
-- ✅ Anti-fraud: rechtsklik blokkeren
-- ✅ Anti-fraud: keyboard shortcuts blokkeren
+- ✅ Anti-fraude: tab switching detectie
+- ✅ Anti-fraude: rechtsklik blokkeren
+- ✅ Anti-fraude: keyboard shortcuts blokkeren
 - ✅ Server-side timer berekening
 - ✅ Auto-inleveren bij timeout
 - ✅ Resultaten inzien na afloop

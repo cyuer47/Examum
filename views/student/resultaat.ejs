@@ -1,12 +1,14 @@
 <div class="resultaat-page">
   <div class="resultaat-card">
-    <h1>Examen Resultaat</h1>
+    <h1>Examenresultaat</h1>
     <h2><%= examen.titel %></h2>
 
     <div
       class="resultaat-score <%= resultaat.geslaagd ? 'geslaagd' : 'gezakt' %>"
     >
-      <div class="score-percentage"><%= resultaat.score_percentage %>%</div>
+      <div class="score-percentage">
+        <%= resultaat.score_percentage.toLocaleString('nl-NL', { maximumFractionDigits: 0 }) %>%
+      </div>
       <div class="score-label">
         <%= resultaat.geslaagd ? 'Geslaagd!' : 'Gezakt' %>
       </div>

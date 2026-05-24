@@ -1,34 +1,34 @@
 <div class="admin-dashboard">
-  <h1>Admin Dashboard</h1>
+  <h1>Beheerdersdashboard</h1>
 
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-number"><%= stats.examens %></div>
       <div class="stat-label">Examens</div>
+      <div class="stat-number"><%= stats.examens %></div>
     </div>
     <div class="stat-card">
-      <div class="stat-number"><%= stats.kandidaten %></div>
       <div class="stat-label">Kandidaten</div>
+      <div class="stat-number"><%= stats.kandidaten %></div>
     </div>
     <div class="stat-card">
-      <div class="stat-number"><%= stats.docenten %></div>
       <div class="stat-label">Docenten</div>
+      <div class="stat-number"><%= stats.docenten %></div>
     </div>
     <div class="stat-card">
-      <div class="stat-number"><%= stats.actief %></div>
       <div class="stat-label">Actief</div>
+      <div class="stat-number"><%= stats.actief %></div>
     </div>
     <div class="stat-card">
-      <div class="stat-number"><%= stats.afgerond %></div>
       <div class="stat-label">Afgerond</div>
+      <div class="stat-number"><%= stats.afgerond %></div>
     </div>
   </div>
 
   <div class="admin-nav">
-    <a href="/admin/kandidaten" class="btn-nav">👥 Kandidaten</a>
-    <a href="/admin/docenten" class="btn-nav">🧑‍🏫 Docenten</a>
-    <a href="/admin/examens" class="btn-nav">📚 Examens</a>
-    <a href="/docent" class="btn-nav">✏️ Nakijken</a>
+    <a href="/admin/kandidaten" class="btn-nav"><span class="icon">group</span> Kandidaten</a>
+    <a href="/admin/docenten" class="btn-nav"><span class="icon">supervisor_account</span> Docenten</a>
+    <a href="/admin/examens" class="btn-nav"><span class="icon">book_2</span> Examens</a>
+    <a href="/docent" class="btn-nav"><span class="icon">fact_check</span> Nakijken</a>
   </div>
 
   <h2>Recente Resultaten</h2>

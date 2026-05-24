@@ -1,56 +1,72 @@
 /* ========================================
-   EXAMEN SYSTEEM - GLOBAL STYLES
+   Examum - GLOBAL STYLES
    ======================================== */
 
 :root {
-  --primary: #1a365d;
-  --primary-light: #2c5282;
-  --secondary: #4a5568;
+  --primary: #275586;
+  --primary-light: #275586;
+  --secondary: #9bd8fd;
   --success: #38a169;
-  --danger: #e53e3e;
+  --danger: #da3f3f;
   --warning: #d69e2e;
   --info: #3182ce;
-  --bg: #f7fafc;
-  --card-bg: #ffffff;
+  --bg: #d9f1ff;
+  --card-bg: #eef9ff;
   --text: #2d3748;
   --text-light: #718096;
-  --border: #e2e8f0;
-  --shadow: 0 1px 3px rgba(0,0,0,0.1);
-  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  --border: #95a5b3;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
   --radius: 8px;
-  --radius-lg: 12px;
+  --radius-lg: 18px;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family:
+    Google Sans Flex,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+  margin: 1rem;
+  font-variation-settings: "ROND" 100;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
 }
 
 /* Header */
 .site-header {
-  background: var(--primary);
-  color: white;
-  padding: 0 24px;
+  background: var(--secondary);
+  padding: 0.8rem;
+  border-radius: 1.25rem;
 }
 
 .header-container {
-  max-width: 1400px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
 }
 
 .logo {
-  color: white;
+  color: var(--text);
   text-decoration: none;
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 500;
+  margin-left: 0.25rem;
 }
 
 .header-nav {
@@ -59,18 +75,22 @@ body {
   gap: 16px;
 }
 
-.user-name { font-weight: 500; }
+.user-name {
+  font-weight: 500;
+}
 
 .btn-logout {
-  color: white;
+  color: var(--text);
   text-decoration: none;
-  padding: 6px 12px;
-  border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 12px;
+  background-color: var(--bg);
   border-radius: var(--radius);
   font-size: 0.875rem;
 }
 
-.btn-logout:hover { background: rgba(255,255,255,0.1); }
+.btn-logout:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
 
 /* Main Content */
 .main-content {
@@ -79,19 +99,79 @@ body {
   padding: 24px;
 }
 
+.material-textfield {
+  position: relative;
+  padding: 12px;
+}
+
+.material-textfield label {
+  position: absolute;
+  font-size: 1rem;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--card-bg);
+  color: var(--accent-text-faded);
+  padding: 0 0.3rem;
+  margin: 0 0.5rem;
+  transition: 0.1s ease-out;
+  transform-origin: left top;
+  pointer-events: none;
+  border-radius: 8px;
+}
+.material-textfield input {
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem 0.7rem;
+  width: calc(100% - 25px);
+  font-family: inherit;
+  font-feature-settings:
+    "liga" 1,
+    "calt" 1,
+    "cv07" 1;
+  background-color: transparent;
+  font-weight: 450;
+  letter-spacing: 0.1px;
+}
+.material-textfield input:focus {
+  border: 3px solid var(--primary-light);
+  padding: calc(1rem - 2px) calc(0.7rem - 2px);
+}
+.material-textfield input:focus + label {
+  color: var(--primary-light);
+  top: 14px;
+  transform: translateY(-50%) scale(0.9);
+  font-weight: 450;
+  letter-spacing: 0.1px;
+}
+.material-textfield input:not(:placeholder-shown) + label,
+.material-textfield select:not(:placeholder-shown) + label {
+  top: 14px;
+  transform: translateY(-50%) scale(0.9);
+  font-weight: 450;
+  letter-spacing: 0.1px;
+}
 /* Buttons */
-.btn-primary, .btn-secondary, .btn-nav, .btn-inleveren, .btn-bookmark {
+.btn-primary,
+.btn-secondary,
+.btn-nav,
+.btn-inleveren,
+.btn-bookmark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
-  border-radius: var(--radius);
+  border-radius: 1rem;
   font-size: 0.9375rem;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
   border: none;
   transition: all 0.2s;
+  font-family: inherit;
+  gap: 0.5rem;
 }
 
 .btn-primary {
@@ -99,26 +179,32 @@ body {
   color: white;
 }
 
-.btn-primary:hover { background: var(--primary-light); }
+.btn-primary:hover {
+  background: var(--primary-light);
+}
 
 .btn-secondary {
-  background: white;
+  background: var(--card-bg);
   color: var(--text);
   border: 1px solid var(--border);
 }
 
-.btn-secondary:hover { background: var(--bg); }
-
-.btn-small {
-  padding: 4px 10px;
-  font-size: 0.75rem;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
+.btn-secondary:hover {
+  background: var(--bg);
 }
 
-.btn-warning { background: var(--warning); color: white; }
-.btn-danger { background: var(--danger); color: white; }
+.btn-small {
+  font-size: 0.875rem;
+}
+
+.btn-warning {
+  background: var(--warning);
+  color: white;
+}
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
 
 /* Forms */
 .form-group {
@@ -135,8 +221,10 @@ body {
 .form-group input,
 .form-group select,
 .form-group textarea {
-  width: 100%;
-  padding: 10px 12px;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: stretch;
+  padding: 1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   font-size: 0.9375rem;
@@ -148,7 +236,7 @@ body {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(26,54,93,0.1);
+  box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
 }
 
 .form-row {
@@ -164,16 +252,18 @@ body {
   cursor: pointer;
 }
 
-.checkbox-group input { width: auto; }
+.checkbox-group input {
+  width: auto;
+}
 
 /* Tables */
 .data-table {
   width: 100%;
-  background: white;
-  border-radius: var(--radius-lg);
+  background: var(--card-bg);
   overflow: hidden;
   box-shadow: var(--shadow);
   border-collapse: collapse;
+  border: 1px solid var(--border);
 }
 
 .data-table th,
@@ -191,22 +281,40 @@ body {
   color: var(--text-light);
 }
 
-.data-table tr:hover { background: var(--bg); }
+.data-table tr:hover {
+  background: var(--bg);
+}
 
 /* Badges */
 .badge {
   display: inline-flex;
-  padding: 2px 8px;
-  border-radius: 9999px;
-  font-size: 0.75rem;
+  padding: 8px 12px;
+  border-radius: 0.875rem;
+  font-size: 0.875rem;
   font-weight: 600;
+  gap: 0.25rem;
 }
 
-.badge-success { background: #c6f6d5; color: #22543d; }
-.badge-danger { background: #fed7d7; color: #742a2a; }
-.badge-warning { background: #fefcbf; color: #744210; }
-.badge-info { background: #bee3f8; color: #2a4365; }
-.badge-primary { background: #e2e8f0; color: var(--primary); }
+.badge-success {
+  background: #c6f6d5;
+  color: #22543d;
+}
+.badge-danger {
+  background: #fed7d7;
+  color: #742a2a;
+}
+.badge-warning {
+  background: #fefcbf;
+  color: #744210;
+}
+.badge-info {
+  background: #bee3f8;
+  color: #2a4365;
+}
+.badge-primary {
+  background: #e2e8f0;
+  color: var(--primary);
+}
 
 /* Alerts */
 .alert {
@@ -215,8 +323,14 @@ body {
   margin-bottom: 16px;
 }
 
-.alert-danger { background: #fed7d7; color: #742a2a; }
-.alert-success { background: #c6f6d5; color: #22543d; }
+.alert-danger {
+  background: #fed7d7;
+  color: #742a2a;
+}
+.alert-success {
+  background: #c6f6d5;
+  color: #22543d;
+}
 
 /* ========================================
    EXAMEN PAGINA
@@ -232,7 +346,7 @@ body {
 .fraud-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.8);
   display: none;
   align-items: center;
   justify-content: center;
@@ -240,7 +354,7 @@ body {
 }
 
 .fraud-message {
-  background: white;
+  background: var(--card-bg);
   padding: 40px;
   border-radius: var(--radius-lg);
   text-align: center;
@@ -261,33 +375,44 @@ body {
 .examen-header-bar {
   background: var(--primary);
   color: white;
-  padding: 12px 24px;
+  padding: 16px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 100;
+  border-radius: 2.5rem;
 }
 
 .examen-titel {
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 
 .timer {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
   text-align: center;
 }
 
-.timer-warning { color: var(--warning); }
-.timer-danger { color: var(--danger); animation: pulse 1s infinite; }
+.timer-warning {
+  color: var(--warning);
+}
+.timer-danger {
+  color: var(--danger);
+  animation: pulse 1s infinite;
+}
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .timer-label {
@@ -313,7 +438,7 @@ body {
 
 .examen-main {
   flex: 2;
-  background: white;
+  background: var(--card-bg);
   border-radius: var(--radius-lg);
   padding: 32px;
   box-shadow: var(--shadow);
@@ -391,7 +516,7 @@ body {
   font-size: 1rem;
 }
 
-/* Info Slide */
+/* Slide met informatie */
 .info-slide-message {
   background: #ebf8ff;
   border: 1px solid #bee3f8;
@@ -403,7 +528,7 @@ body {
 
 /* Sidebar */
 .overzicht-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: var(--radius-lg);
   padding: 20px;
   box-shadow: var(--shadow);
@@ -457,9 +582,8 @@ body {
 }
 
 .vraag-nummer.info {
-  background: var(--info);
-  color: white;
-  border-color: var(--info);
+  background: var(--secondary);
+  color: var(--text);
   font-size: 1rem;
 }
 
@@ -483,9 +607,16 @@ body {
   border-radius: 4px;
 }
 
-.legend-box.huidig { background: var(--primary); }
-.legend-box.beantwoord { background: var(--success); }
-.legend-box.niet-beantwoord { background: var(--bg); border: 1px solid var(--border); }
+.legend-box.huidig {
+  background: var(--primary);
+}
+.legend-box.beantwoord {
+  background: var(--success);
+}
+.legend-box.niet-beantwoord {
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
 
 /* Navigation */
 .examen-nav {
@@ -493,20 +624,23 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  background: white;
-  border-top: 1px solid var(--border);
+  background: var(--card-bg);
   position: sticky;
   bottom: 0;
+  border-radius: 3rem;
 }
 
 .btn-nav {
   padding: 10px 24px;
-  background: white;
+  background: var(--card-bg);
   color: var(--primary);
   border: 2px solid var(--primary);
 }
 
-.btn-nav:hover { background: var(--primary); color: white; }
+.btn-nav:hover {
+  background: var(--primary);
+  color: white;
+}
 
 .btn-nav.disabled {
   opacity: 0.4;
@@ -521,11 +655,13 @@ body {
   font-size: 1rem;
 }
 
-.btn-inleveren:hover { background: #c53030; }
+.btn-inleveren:hover {
+  background: #c53030;
+}
 
 .btn-bookmark {
   padding: 10px 16px;
-  background: white;
+  background: var(--card-bg);
   border: 2px solid var(--border);
   font-size: 1.25rem;
 }
@@ -543,9 +679,9 @@ body {
 }
 
 .start-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 48px;
+  background: var(--card-bg);
+  border-radius: 3rem;
+  padding: 2rem;
   max-width: 600px;
   width: 100%;
   box-shadow: var(--shadow-lg);
@@ -578,43 +714,49 @@ body {
   border-radius: var(--radius);
 }
 
-.info-label { color: var(--text-light); font-size: 0.875rem; }
-.info-value { font-weight: 600; }
+.info-label {
+  color: var(--text-light);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.info-value {
+  font-weight: 600;
+}
 
 .start-waarschuwing {
   background: #fffaf0;
   border: 1px solid #fbd38d;
-  border-radius: var(--radius);
-  padding: 20px;
+  border-radius: var(--radius-lg);
+  padding: 16px;
   margin-bottom: 24px;
   text-align: left;
 }
 
 .start-waarschuwing h3 {
   color: var(--warning);
-  margin-bottom: 12px;
+  margin-top: 0;
 }
 
 .start-waarschuwing ul {
   padding-left: 20px;
-  color: var(--text-light);
 }
 
-.start-waarschuwing li { margin-bottom: 6px; }
+.start-waarschuwing li {
+  margin-bottom: 6px;
+}
 
 .btn-start {
   width: 100%;
-  padding: 16px;
-  background: var(--success);
+  padding: 2rem;
+  background: var(--primary);
   color: white;
   border: none;
-  border-radius: var(--radius);
-  font-size: 1.125rem;
-  font-weight: 700;
+  border-radius: 4rem;
+  font-size: 1.25rem;
+  font-weight: 500;
   cursor: pointer;
+  font-family: inherit;
 }
-
-.btn-start:hover { background: #2f855a; }
 
 /* ========================================
    RESULTAAT & INZIEN
@@ -629,9 +771,9 @@ body {
 
 .resultaat-card,
 .inzien-summary {
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 40px;
+  background: var(--card-bg);
+  border-radius: 3rem;
+  padding: 2rem;
   box-shadow: var(--shadow-lg);
   text-align: center;
 }
@@ -642,7 +784,7 @@ body {
 
 .score-percentage {
   font-size: 4rem;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1;
 }
 
@@ -651,8 +793,12 @@ body {
   margin-top: 8px;
 }
 
-.resultaat-score.geslaagd .score-percentage { color: var(--success); }
-.resultaat-score.gezakt .score-percentage { color: var(--danger); }
+.resultaat-score.geslaagd .score-percentage {
+  color: var(--success);
+}
+.resultaat-score.gezakt .score-percentage {
+  color: var(--danger);
+}
 
 .resultaat-details {
   display: grid;
@@ -664,7 +810,7 @@ body {
 .detail-item {
   padding: 16px;
   background: var(--bg);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
 }
 
 .detail-label {
@@ -677,11 +823,15 @@ body {
 
 .detail-value {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
-.detail-value.correct { color: var(--success); }
-.detail-value.wrong { color: var(--danger); }
+.detail-value.correct {
+  color: var(--success);
+}
+.detail-value.wrong {
+  color: var(--danger);
+}
 
 .resultaat-actions,
 .inzien-actions {
@@ -696,17 +846,23 @@ body {
 }
 
 .vraag-review {
-  background: white;
+  background: var(--card-bg);
   border-radius: var(--radius-lg);
   padding: 24px;
   margin-bottom: 16px;
   box-shadow: var(--shadow);
-  border-left: 4px solid var(--border);
+  border-left: 6px solid var(--border);
 }
 
-.vraag-review.correct { border-left-color: var(--success); }
-.vraag-review.fout { border-left-color: var(--danger); }
-.vraag-review.niet-beantwoord { border-left-color: var(--warning); }
+.vraag-review.correct {
+  border-left-color: var(--success);
+}
+.vraag-review.fout {
+  border-left-color: var(--danger);
+}
+.vraag-review.niet-beantwoord {
+  border-left-color: var(--warning);
+}
 
 .vraag-review .vraag-header {
   display: flex;
@@ -755,8 +911,14 @@ body {
   border: 2px solid var(--success);
 }
 
-.correct-mark { color: var(--success); font-weight: 700; }
-.wrong-mark { color: var(--danger); font-weight: 700; }
+.correct-mark {
+  color: var(--success);
+  font-weight: 700;
+}
+.wrong-mark {
+  color: var(--danger);
+  font-weight: 700;
+}
 
 .jouw-antwoord {
   margin-top: 12px;
@@ -770,41 +932,45 @@ body {
    ADMIN & DOCENT
    ======================================== */
 
-.admin-dashboard,
-.docent-dashboard,
-.admin-kandidaten,
-.admin-examens,
-.admin-vragen,
-.admin-toewijzen {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  display: flex;
+  gap: 0.25rem;
   margin-bottom: 32px;
 }
 
 .stat-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 24px;
+  background: var(--card-bg);
+  padding: 12px 24px;
   box-shadow: var(--shadow);
-  text-align: center;
+  flex: 1;
+  border-radius: 0.25rem;
+}
+
+.stat-card:first-of-type {
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+
+.stat-card:last-of-type {
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 }
 
 .stat-number {
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--primary);
 }
 
 .stat-label {
   color: var(--text-light);
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin-top: 4px;
+  font-weight: 600;
+  font-variation-settings:
+    "opsz" 100,
+    "ROND" 100;
+  letter-spacing: 0.1px;
 }
 
 .admin-nav {
@@ -816,9 +982,9 @@ body {
 .toewijzen-form,
 .nieuw-examen-form,
 .nieuw-vraag-form {
-  background: white;
+  background: var(--card-bg);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: 16px;
   margin-bottom: 32px;
   box-shadow: var(--shadow);
 }
@@ -826,8 +992,14 @@ body {
 .toewijzen-form h2,
 .nieuw-examen-form h2,
 .nieuw-vraag-form h2 {
-  margin-bottom: 16px;
-  font-size: 1.125rem;
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.icon {
+  font-family: Material Symbols Rounded;
+  font-size: 24px;
+  line-height: 1;
 }
 
 .code-display {
@@ -851,7 +1023,7 @@ body {
 .big-code {
   font-size: 2rem;
   font-weight: 700;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   background: var(--bg);
   padding: 16px;
   border-radius: var(--radius);
@@ -859,7 +1031,7 @@ body {
 }
 
 .success-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: var(--radius-lg);
   padding: 48px;
   box-shadow: var(--shadow-lg);
@@ -875,7 +1047,6 @@ body {
   display: flex;
   gap: 12px;
   justify-content: center;
-  margin-top: 24px;
 }
 
 .vragen-lijst {
@@ -886,8 +1057,8 @@ body {
 }
 
 .vraag-card {
-  background: white;
-  border-radius: var(--radius);
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
   padding: 20px;
   box-shadow: var(--shadow);
 }
@@ -918,9 +1089,13 @@ body {
 /* Footer */
 .site-footer {
   text-align: center;
-  padding: 24px;
+  padding-top: 1.25rem;
   color: var(--text-light);
   font-size: 0.875rem;
+  font-weight: 600;
+  font-variation-settings:
+    "opsz" 100,
+    "ROND" 100;
 }
 
 /* Error page */
@@ -932,7 +1107,7 @@ body {
 }
 
 .error-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: var(--radius-lg);
   padding: 48px;
   text-align: center;

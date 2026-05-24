@@ -4,48 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
+  <link
+     rel="stylesheet"
+     href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght,ROND@6..144,1..1000,100&display=swap"
+   />
   <link rel="stylesheet" href="/css/style.css">
   <style>
-    body { background: #f0f2f5; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-    .login-box { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
-    .login-box h1 { margin-bottom: 8px; color: #1a365d; }
-    .login-box p { color: #666; margin-bottom: 24px; }
+    body { background: var(--bg); display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 2rem); }
+    .login-box { background: var(--card-bg); padding: 2rem; border-radius: 3rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 0.4rem; }
+    .login-box h1 { margin: 0; color: #1a365d; }
+    .login-box p { color: #666; }
     .form-group { margin-bottom: 16px; }
     .form-group label { display: block; margin-bottom: 6px; font-weight: 500; color: #333; }
     .form-group input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
     .form-group input:focus { outline: none; border-color: #1a365d; }
-    .btn-login { width: 100%; padding: 14px; background: #1a365d; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
+    .btn-login {width:100%;padding:2.75rem 2rem;background:var(--primary);color:white;border:none;border-radius:4rem;font-size:1.25rem;font-weight:500;cursor:pointer;font-family:inherit}
     .btn-login:hover { background: #2c5282; }
     .error-msg { background: #fed7d7; color: #c53030; padding: 12px; border-radius: 8px; margin-bottom: 16px; }
-    .kandidaat-link { text-align: center; margin-top: 20px; }
-    .kandidaat-link a { color: #1a365d; text-decoration: none; }
-    .kandidaat-link a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="login-box">
-    <h1>ExamenSysteem</h1>
-    <p>Admin / Docent Login</p>
+    <h1>Examum</h1>
+    <p>Inloggen voor docenten/admins</p>
 
     <% if (locals.error) { %>
       <div class="error-msg"><%= error %></div>
     <% } %>
 
     <form action="/login" method="POST">
-      <div class="form-group">
+      <div class="material-textfield">
+        <input type="text" id="username" name="username" placeholder=" " required autofocus>
         <label for="username">Gebruikersnaam</label>
-        <input type="text" id="username" name="username" required autofocus>
       </div>
-      <div class="form-group">
+      <div class="material-textfield" style="margin-bottom: 1rem;">
+        <input type="password" id="password" name="password" placeholder=" " required>
         <label for="password">Wachtwoord</label>
-        <input type="password" id="password" name="password" required>
       </div>
       <button type="submit" class="btn-login">Inloggen</button>
     </form>
 
-    <div class="kandidaat-link">
-      <a href="/kandidaat-login">Kandidaat? Klik hier</a>
-    </div>
+      <a href="/kandidaat-login"><button class="btn-login" style="background-color: var(--bg);padding: 1.75rem;border-radius: 2rem; color: var(--text);">Inloggen voor leerlingen</button></a>
   </div>
 </body>
 </html>

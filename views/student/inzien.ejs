@@ -1,18 +1,18 @@
 <div class="inzien-page">
-  <h1>Examen Inzien</h1>
+  <h1>Examen inzien</h1>
   <h2><%= examen.titel %></h2>
 
   <div class="inzien-summary">
-    Score: <strong><%= resultaat.score_percentage %>%</strong> 
-    (<%= resultaat.goed %>/<%= resultaat.totaal_vragen %>)
     <span class="badge <%= resultaat.geslaagd ? 'badge-success' : 'badge-danger' %>">
       <%= resultaat.geslaagd ? 'Geslaagd' : 'Gezakt' %>
     </span>
+    Score: <strong><%= resultaat.score_percentage %>%</strong>
+    (<%= resultaat.goed %>/<%= resultaat.totaal_vragen %>)
   </div>
 
   <div class="vragen-lijst">
     <% vragen.forEach((vraag, idx) => { %>
-      <div class="vraag-review 
+      <div class="vraag-review
         <%= vraag.is_info ? 'info-slide' : '' %>
         <%= !vraag.is_info && vraag.is_correct === 1 ? 'correct' : '' %>
         <%= !vraag.is_info && vraag.is_correct === 0 && !vraag.isOpen ? 'fout' : '' %>
@@ -21,7 +21,7 @@
         <div class="vraag-header">
           <span class="vraag-nummer"><%= idx + 1 %></span>
           <% if (vraag.is_info) { %>
-            <span class="badge badge-info">Info slide</span>
+            <span class="badge badge-info">Slide met informatie</span>
           <% } else if (vraag.isOpen) { %>
             <span class="badge badge-warning">Open vraag</span>
             <% if (vraag.gegeven_antwoord) { %>
@@ -51,8 +51,8 @@
         <% if (!vraag.is_info && !vraag.isOpen) { %>
           <div class="opties-review">
             <% vraag.opties.forEach(optie => { %>
-              <div class="optie-review 
-                <%= optie.is_correct ? 'optie-correct' : '' %> 
+              <div class="optie-review
+                <%= optie.is_correct ? 'optie-correct' : '' %>
                 <%= vraag.gegeven_antwoord === optie.label ? 'optie-gekozen' : '' %>">
                 <span class="optie-label"><%= optie.label %></span>
                 <span class="optie-tekst"><%= optie.tekst %></span>
@@ -99,7 +99,7 @@
 .beoordeling-hint {
   display: block;
   margin-top: 8px;
-  color: var(--warning);
+  color: var(--text-light);
 }
 .open-beantwoord {
   border-left-color: var(--warning) !important;

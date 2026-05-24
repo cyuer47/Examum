@@ -1,5 +1,5 @@
 <div class="admin-docenten">
-  <h1>Docenten Beheer</h1>
+  <h1>Docenten beheren</h1>
 
   <% if (locals.error) { %>
     <div class="alert alert-danger"><%= error %></div>
@@ -9,8 +9,8 @@
   <% } %>
 
   <div class="tabs">
-    <button class="tab-btn active" data-tab="aanmaken">Nieuwe Docent</button>
-    <button class="tab-btn" data-tab="overzicht">Alle Docenten</button>
+    <button class="tab-btn active btn-primary" data-tab="aanmaken">Nieuwe docent</button>
+    <button class="tab-btn btn-primary" data-tab="overzicht">Alle docenten</button>
   </div>
 
   <!-- TAB 1: Aanmaken -->
@@ -69,7 +69,7 @@
               <td>
                 <form action="/admin/docent/verwijder/<%= d.id %>" method="POST"
                       onsubmit="return confirm('Docent verwijderen?')">
-                  <button type="submit" class="btn-small btn-danger"
+                  <button type="submit" class="btn-small btn-danger btn-primary"
                     <%= d.examens_count > 0 ? 'title="Let op: docent heeft examens"' : '' %>>
                     Verwijderen
                   </button>

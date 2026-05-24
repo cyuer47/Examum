@@ -1,7 +1,7 @@
 <div class="docent-dashboard">
-  <h1>Docent Dashboard</h1>
+  <h1>Docentendashboard</h1>
 
-  <h2>Mijn Examens</h2>
+  <h2>Mijn examens</h2>
   <table class="data-table">
     <thead>
       <tr>
@@ -19,7 +19,7 @@
           <td><%= e.aantal_kandidaten %></td>
           <td>
             <a href="/docent/resultaten/<%= e.id %>" class="btn-small btn-primary">Resultaten</a>
-            <a href="/docent/open-vragen/<%= e.id %>" class="btn-small btn-warning">Open Vragen</a>
+            <a href="/docent/open-vragen/<%= e.id %>" class="btn-small btn-primary btn-warning">Open Vragen</a>
           </td>
         </tr>
       <% }) %>

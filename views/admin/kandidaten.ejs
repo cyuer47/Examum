@@ -9,9 +9,9 @@
   <% } %>
 
   <div class="tabs">
-    <button class="tab-btn active" data-tab="toewijzen">Toewijzen aan Examen</button>
-    <button class="tab-btn" data-tab="aanmaken">Nieuwe Kandidaat</button>
-    <button class="tab-btn" data-tab="overzicht">Alle Kandidaten</button>
+    <button class="tab-btn active btn-primary" data-tab="toewijzen">Toewijzen aan examen</button>
+    <button class="tab-btn btn-primary" data-tab="aanmaken">Nieuwe kandidaat</button>
+    <button class="tab-btn btn-primary" data-tab="overzicht">Alle kandidaten</button>
   </div>
 
   <!-- TAB 1: Toewijzen -->
@@ -23,7 +23,7 @@
           <div class="form-group">
             <label>Kandidaat *</label>
             <select name="kandidaat_id" required>
-              <option value="">Selecteer...</option>
+              <option value="">Selecteren...</option>
               <% beschikbareKandidaten.forEach(k => { %>
                 <option value="<%= k.id %>"><%= k.naam %></option>
               <% }) %>
@@ -32,7 +32,7 @@
           <div class="form-group">
             <label>Examen *</label>
             <select name="examen_id" required>
-              <option value="">Selecteer...</option>
+              <option value="">Selecteren...</option>
               <% beschikbareExamens.forEach(e => { %>
                 <option value="<%= e.id %>"><%= e.titel %></option>
               <% }) %>
@@ -44,7 +44,7 @@
           </div>
           <div class="form-group">
             <label>Wachtwoord (optioneel)</label>
-            <input type="text" name="wachtwoord" placeholder="Auto-genereren">
+            <input type="text" name="wachtwoord" placeholder="Wachtwoord">
           </div>
         </div>
         <button type="submit" class="btn-primary">Toewijzen</button>
@@ -60,7 +60,7 @@
           <th>Code</th>
           <th>Status</th>
           <th>Score</th>
-          <th>Fraud</th>
+          <th>Fraude</th>
           <th>Acties</th>
         </tr>
       </thead>
@@ -71,17 +71,17 @@
             <td><%= ke.examen_titel %></td>
             <td><code><%= ke.inlogcode %></code></td>
             <td>
-              <span class="badge 
+              <span class="badge
                 <%= ke.status === 'bezig' ? 'badge-warning' : ke.status === 'beeindigd' ? 'badge-success' : 'badge-info' %>">
                 <%= ke.status %>
               </span>
             </td>
             <td>
               <% if (ke.score_percentage !== null) { %>
-                <%= ke.score_percentage %>% 
                 <span class="badge <%= ke.geslaagd ? 'badge-success' : 'badge-danger' %>">
                   <%= ke.geslaagd ? '✓' : '✗' %>
                 </span>
+                <%= ke.score_percentage %>%
               <% } else { %>-<% } %>
             </td>
             <td>
@@ -92,11 +92,11 @@
             <td class="actions">
               <% if (ke.status === 'beeindigd') { %>
                 <form action="/admin/kandidaat/reset/<%= ke.id %>" method="POST" style="display:inline">
-                  <button type="submit" class="btn-small btn-warning" data-confirm="Reset dit examen?">Reset</button>
+                  <button type="submit" class="btn-small btn-primary btn-warning" data-confirm="Reset dit examen?">Resetten</button>
                 </form>
               <% } %>
               <form action="/admin/kandidaat/verwijder/<%= ke.id %>" method="POST" style="display:inline">
-                <button type="submit" class="btn-small btn-danger" data-confirm="Verwijderen?">Verwijder</button>
+                <button type="submit" class="btn-small btn-danger btn-primary" data-confirm="Verwijderen?">Verwijderen</button>
               </form>
             </td>
           </tr>
@@ -117,14 +117,14 @@
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="email" name="email" placeholder="optioneel">
+            <input type="email" name="email" placeholder="E-mailadres">
           </div>
           <div class="form-group">
             <label>Wachtwoord *</label>
             <input type="text" name="wachtwoord" required placeholder="Wachtwoord">
           </div>
         </div>
-        <button type="submit" class="btn-primary">Kandidaat Aanmaken</button>
+        <button type="submit" class="btn-primary">Kandidaat aanmaken</button>
       </form>
     </div>
   </div>
@@ -149,7 +149,7 @@
             <td><%= k.examens_count %></td>
             <td>
               <form action="/admin/kandidaat/user-verwijder/<%= k.id %>" method="POST" style="display:inline">
-                <button type="submit" class="btn-small btn-danger" data-confirm="Verwijderen?">Verwijder</button>
+                <button type="submit" class="btn-small btn-danger btn-primary" data-confirm="Verwijderen?">Verwijderen</button>
               </form>
             </td>
           </tr>
@@ -161,10 +161,10 @@
 
 
 <style>
-.tabs { display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid var(--border); }
+.tabs { display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid var(--border); width: fit-content; }
 .tab-btn { padding: 12px 24px; background: none; border: none; cursor: pointer; font-weight: 600; color: var(--text-light); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
-.tab-btn:hover { color: var(--primary); }
-.tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+.tab-btn:hover { color: var(--primary); background: none; }
+.tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); border-radius: 0; }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 </style>

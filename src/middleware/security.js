@@ -1,10 +1,10 @@
-const rateLimit = require('express-rate-limit');
+const rateLimit = require("express-rate-limit");
 
 // Rate limiting voor login pogingen
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minuten
   max: 10,
-  message: 'Te veel login pogingen, probeer later opnieuw.',
+  message: "Te veel login pogingen, probeer later opnieuw.",
   standardHeaders: true,
   legacyHeaders: false,
 });
@@ -13,7 +13,7 @@ const loginLimiter = rateLimit({
 const apiLimiter = rateLimit({
   windowMs: 1 * 60 * 1000,
   max: 60,
-  message: 'Te veel requests',
+  message: "Te veel requests",
 });
 
 // Security headers via Helmet
@@ -22,16 +22,16 @@ const apiLimiter = rateLimit({
 const helmetConfig = {
   contentSecurityPolicy: {
     directives: {
-      defaultSrc:     ["'self'"],
-      styleSrc:       ["'self'", "'unsafe-inline'"],  // inline <style> in EJS views
-      scriptSrc:      ["'self'"],                      // alleen externe .js bestanden
-      scriptSrcAttr:  ["'none'"],                      // blokkeert onclick= etc. volledig
-      imgSrc:         ["'self'", "data:", "blob:", "*"],
-      connectSrc:     ["'self'"],
-      fontSrc:        ["'self'"],
-      objectSrc:      ["'none'"],
-      mediaSrc:       ["'self'"],
-      frameSrc:       ["'none'"],
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      scriptSrc: ["'self'"],
+      scriptSrcAttr: ["'none'"],
+      imgSrc: ["'self'", "data:", "blob:", "*"],
+      connectSrc: ["'self'"],
+      objectSrc: ["'none'"],
+      mediaSrc: ["'self'"],
+      frameSrc: ["'none'"],
     },
   },
   crossOriginEmbedderPolicy: false,

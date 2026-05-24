@@ -12,21 +12,21 @@
           <label class="type-option">
             <input type="radio" name="vraag_type" value="multiple_choice" checked>
             <span class="type-box">
-              <strong>Multiple Choice</strong>
+              <strong>Meerkeuzevragen</strong>
               <small>Kandidaat kiest uit A/B/C/D</small>
             </span>
           </label>
           <label class="type-option">
             <input type="radio" name="vraag_type" value="open">
             <span class="type-box">
-              <strong>Open Vraag</strong>
+              <strong>Open vraag</strong>
               <small>Kandidaat typt antwoord (docent beoordeelt)</small>
             </span>
           </label>
           <label class="type-option">
             <input type="radio" name="vraag_type" value="info">
             <span class="type-box">
-              <strong>Info Slide</strong>
+              <strong>Slide met informatie</strong>
               <small>Geen antwoord nodig, alleen informatie</small>
             </span>
           </label>
@@ -60,15 +60,15 @@
         <div class="vraag-header">
           <span class="vraag-nummer">#<%= idx + 1 %></span>
           <% if (v.is_info) { %>
-            <span class="badge badge-info">ℹ️ Info Slide</span>
+            <span class="badge badge-info"><span class="icon">info</span> Slide met informatie</span>
           <% } else if (v.aantal_opties > 0) { %>
-            <span class="badge badge-primary">🔘 Multiple Choice (<%= v.aantal_opties %> opties)</span>
+            <span class="badge badge-primary"><span class="icon">ballot</span> Meerkeuzevragen (<%= v.aantal_opties %> opties)</span>
           <% } else { %>
-            <span class="badge badge-warning">✏️ Open Vraag</span>
+            <span class="badge badge-warning"><span class="icon">edit_note</span> Open vraag</span>
           <% } %>
 
           <form action="/admin/vraag/verwijder/<%= v.id %>" method="POST" style="display:inline; margin-left: auto;">
-            <button type="submit" class="btn-small btn-danger" data-confirm="Vraag verwijderen?">Verwijder</button>
+            <button type="submit" class="btn-small btn-danger btn-primary" data-confirm="Vraag verwijderen?">Verwijderen</button>
           </form>
         </div>
 
@@ -80,7 +80,7 @@
 
         <% if (!v.is_info && v.aantal_opties === 0) { %>
           <div class="open-hint">
-            <small>⚠️ Dit is een open vraag. Het antwoord wordt niet automatisch nagekeken.</small>
+            <small>⚠️ Dit is een Open vraag. Het antwoord wordt niet automatisch nagekeken.</small>
           </div>
         <% } %>
 
@@ -117,15 +117,16 @@
 }
 .type-option input:checked + .type-box {
   border-color: var(--primary);
-  background: #ebf8ff;
+  background: var(--bg);
 }
 .type-box strong {
+  font-size: 1rem;
   display: block;
   margin-bottom: 4px;
 }
 .type-box small {
   color: var(--text-light);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 .open-hint {
   margin-top: 8px;

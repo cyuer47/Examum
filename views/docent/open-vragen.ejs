@@ -12,7 +12,7 @@
     </div>
   <% } else { %>
     <div class="open-vragen-lijst">
-      <% 
+      <%
       // Groepeer per vraag
       const grouped = {};
       openVragen.forEach(v => {
@@ -69,7 +69,7 @@
                       </div>
 
                       <div class="form-group">
-                        <input type="text" name="feedback" placeholder="Feedback (optioneel)" 
+                        <input type="text" name="feedback" placeholder="Feedback (optioneel)"
                           value="<%= a.beoordeling ? a.beoordeling.feedback || '' : '' %>">
                       </div>
 
@@ -145,13 +145,15 @@
 }
 .score-box.correct {
   color: var(--success);
+  border-color: currentColor;
 }
 .score-box.wrong {
   color: var(--danger);
 }
 .score-option input:checked + .score-box {
-  border-color: currentColor;
-  background: var(--bg);
+	border-color: currentColor;
+	background: var(--secondary);
+	color: var(--primary-light);
 }
 .empty-state {
   text-align: center;

@@ -40,7 +40,7 @@
       <div class="vraag-content">
         <div class="vraag-meta">
           <% if (vraag.is_info) { %>
-            <span class="badge badge-info">Info slide</span>
+            <span class="badge badge-info">Slide met informatie</span>
           <% } else if (isOpen) { %>
             <span class="badge badge-warning">Open vraag</span>
           <% } else { %>
@@ -55,14 +55,14 @@
           <p>Dit is een informatieve slide. Klik op "Volgende" om door te gaan.</p>
         </div>
       <% } else if (isOpen) { %>
-        <!-- OPEN VRAAG – geen inline handlers -->
+        <!-- Open vraag – geen inline handlers -->
         <div class="open-antwoord">
           <label for="open-antwoord">Typ je antwoord:</label>
           <textarea id="open-antwoord" rows="6" placeholder="Typ hier je antwoord..."><%= gegevenAntwoord || '' %></textarea>
           <small class="open-hint">Je antwoord wordt automatisch opgeslagen. Het wordt later door de docent beoordeeld.</small>
         </div>
       <% } else { %>
-        <!-- MULTIPLE CHOICE – geen inline handlers -->
+        <!-- Meerkeuzevragen – geen inline handlers -->
         <div class="antwoord-opties">
           <% opties.forEach(function(optie) { %>
             <label class="optie-label <%= gegevenAntwoord === optie.label ? 'selected' : '' %>" data-label="<%= optie.label %>">
@@ -88,7 +88,7 @@
                <%= beantwoordMap[v.id] ? 'beantwoord' : '' %>
                <%= v.is_info ? 'info' : '' %>
                <%= !beantwoordMap[v.id] && idx + 1 !== vraagNr ? 'niet-beantwoord' : '' %>">
-              <% if (v.is_info) { %>ℹ️<% } else { %><%= idx + 1 %><% } %>
+              <% if (v.is_info) { %><span class="icon">info</span><% } else { %><%= idx + 1 %><% } %>
             </a>
           <% }); %>
         </div>
@@ -110,7 +110,7 @@
       <span class="btn-nav disabled">← Vorige</span>
     <% } %>
 
-    <button id="btn-bookmark" class="btn-bookmark">🔖</button>
+    <button id="btn-bookmark" class="btn-bookmark"><span class="icon">bookmark_add</span></button>
 
     <% if (vraagNr === totaalVragen) { %>
       <button id="btn-inleveren" class="btn-inleveren">INLEVEREN</button>
